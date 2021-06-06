@@ -1,37 +1,42 @@
 let timerVar;
 let currentScore = 0;
 let standardInterval = 500;
-let columnStatus = [0, 0, 0, 0 ,0 ,0 ,0 ,0, 0]
+let columnStatus = [0, 0, 0, 0 ,0 ,0 ,0 ,0, 0];
+let startTime = new Date().getTime();
 
 function startGame() {
     currentScore = 0;
+    standardInterval = 500;
+    startTime = new Date().getTime();
     timerVar = setInterval(selectRandomCol, standardInterval)
 }
 
 function stopGame() {
+    resetColumnStatus();
+    resetColumnImages();
     clearInterval(timerVar);
 }
 
 function selectRandomColumnNumber() {
-    return Math.floor(Math.random() * 10);
+    const randomNumber = Math.floor(Math.random() * 10);
+    if (columnStatus[randomNumber - 1] === 1) {
+        return selectRandomColumnNumber()
+    }
+    return randomNumber;
 }
 
 function selectRandomCol() {
     let colNumber = selectRandomColumnNumber().toString();
-    document.getElementById("col" + colNumber).style.backgroundColor = "blue";
     document.getElementById("img" + colNumber).src = "images/reaperDeathSeal" + colNumber + ".jpg";
     columnStatus[colNumber - 1] = 1;
     if (!columnStatus.filter(status => status === 0).length) {
-        
+        setUserLost()
     }
 }
 
 function clickOnHighlightedColumn(colNumber) {
-    if (document.getElementById("col" + colNumber).style.backgroundColor !== 'blue') {
-        document.getElementById("col" + colNumber ).style.backgroundColor = "red";
-        alert('you lost')
-        alert("your score was" + "    " + currentScore)
-        clearInterval(timerVar);
+    if (columnStatus[colNumber - 1] === 0) {
+        setUserLost()
     }
     currentScore = currentScore + 1;
     if (currentScore === 10) {
@@ -47,12 +52,14 @@ function clickOnHighlightedColumn(colNumber) {
         clearInterval(timerVar);
         timerVar = setInterval(selectRandomCol, standardInterval)
     }
+    const timeNow = new Date();
+    const totalTimeInSeconds = (timeNow.getTime() / 1000) - (startTime / 1000);
 
     document.getElementById("score").innerHTML = currentScore;
-    document.getElementById("currentSpeed").innerHTML = standardInterval;
-    document.getElementById("col" + colNumber).style.removeProperty('background-color');
-    document.getElementById("img" + colNumber).src = "images/reaperDeathSeal.jpg";
-    
+    document.getElementById("currentSpeed").innerHTML = (currentScore/ totalTimeInSeconds);
+    document.getElementById("time").innerHTML = (totalTimeInSeconds);
+    document.getElementById("img" + colNumber).src = "images/itachiHandSign.jpg";
+    columnStatus[colNumber - 1] = 0;
 }
 
 function resetColumnStatus() {
@@ -60,7 +67,13 @@ function resetColumnStatus() {
 }
 
 function setUserLost() {
-    alert('you lost')
-    alert("your score was" + "    " + currentScore)
     clearInterval(timerVar);
+    document.getElementById("lost-modal-score").innerHTML = currentScore;
+    document.getElementById("lost-modal-opener").click();
+}
+
+function resetColumnImages() {
+    for (let i = 1; i< 10; i = i + 1) {
+        document.getElementById("img" + i).src = "images/itachiHandSign.jpg";
+    }
 }

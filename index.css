@@ -3,6 +3,27 @@
     height: max-content;
 }
 
-.full-height {
-    height: 100%;
-  }
+.body-bg {
+    background-image: url("images/itachiImg1.png");
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: 70%;
+}
+
+.heading-text-style {
+    font-size: xx-large;
+}
+
+.fit-image{
+    max-height: 50%;
+    }
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+
+.heading {
+      height: 100px;
+}

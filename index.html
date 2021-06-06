@@ -4,58 +4,87 @@
 
     <link rel="stylesheet" type="text/css" href="index.css" media="screen"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <head>
         <title>Clicker Game</title>
     </head>
-    <body>
-        <div class=" row h-25">
-            <span class="col text-center align-middle my-auto">
+    <body class="body-bg">
+        <div class="row m-5">
+            <span class="col text-center align-middle my-auto text-white my-auto heading-text-style">
                 Kakashi the Copy ninja
             </span>
         </div>
 
-        <div class="full-height">
-            <div id="row1"  class="row h-25 text-center  m-1">
+        <div>
+            <div id="row1"  class="row h-25 text-center my-2">
                 <div id="col1" class="col border m-1" onclick="clickOnHighlightedColumn(1)">
-                    <img class="img-responsive " id="img1" src="images/reaperDeathSeal.jpg"/>
+                    <img class=" " id="img1" src="images/itachiHandSign.jpg"/>
                 </div>
                 <div id="col2" class="col border m-1" onclick="clickOnHighlightedColumn(2)">
-                    <img id="img2" src="images/reaperDeathSeal.jpg"/>
+                    <img id="img2" class="" src="images/itachiHandSign.jpg"/>
                 </div>
                 <div id="col3" class="col border m-1" onclick="clickOnHighlightedColumn(3)">
-                    <img id="img3" src="images/reaperDeathSeal.jpg"/>
+                    <img id="img3" class=" " src="images/itachiHandSign.jpg"/>
                 </div>
             </div>
-            <div id="row2" class="row h-25 text-center  m-1">
+             <div id="row2" class="row h-25 text-center my-2">
                 <div id="col4" class="col border  m-1" onclick="clickOnHighlightedColumn(4)">
-                    <img class="img-responsive" id="img4" src="images/reaperDeathSeal.jpg"/>
+                    <img class="" id="img4" src="images/itachiHandSign.jpg"/>
                 </div>
-                <div id="col5" class="col border  m-1 " onclick="clickOnHighlightedColumn(5)">
-                    <img id="img5" src="images/reaperDeathSeal.jpg"/>
+                <div id="col5" class="col border  m-1" onclick="clickOnHighlightedColumn(5)">
+                    <img class="" id="img5" src="images/itachiHandSign.jpg"/>
                 </div>
                 <div id="col6" class="col border m-1" onclick="clickOnHighlightedColumn(6)">
-                    <img id="img6" src="images/reaperDeathSeal.jpg"/>
+                    <img class="" id="img6" src="images/itachiHandSign.jpg"/>
                 </div>
             </div>
-            <div id="row3" class="row h-25  text-center m-1">
+            <div id="row3" class="row h-25 text-center my-2 ">
                 <div id="col7" class="col border m-1" onclick="clickOnHighlightedColumn(7)">
-                    <img class="img-responsive" id="img7" src="images/reaperDeathSeal.jpg"/>
+                    <img class="" id="img7" src="images/itachiHandSign.jpg"/>
                 </div>
                 <div id="col8" class="col border m-1" onclick="clickOnHighlightedColumn(8)">
-                    <img id="img8" src="images/reaperDeathSeal.jpg"/>
+                    <img class="" id="img8" src="images/itachiHandSign.jpg"/>
                 </div>
                 <div id="col9" class="col border m-1" onclick="clickOnHighlightedColumn(9)">
-                    <img id="img9" src="images/reaperDeathSeal.jpg"/>
+                    <img class="" id="img9" src="images/itachiHandSign.jpg"/>
                 </div>
-            </div>
+            </div> 
             <div class="text-center my-3">
                 <button class="btn btn-md btn-primary" onclick="startGame()">Click here to start game</button>
-                <button class="btn btn-md btn-primary" onclick="stopGame()">Click here to stop game</button>
+                <button class="btn btn-md btn-primary" onclick="stopGame()">Click here to stop/ reset game</button>
             </div>
-           
-            <div id="score" class="border m-2 p-3"></div>
-            <div id="currentSpeed" class="border m-2 p-3"></div>
+           <div class="text-center my-3">
+               <span class="text-white border mx-3">Score:  <span id="score" class=" m-2 p-3"></span> </span>
+               <span class="text-white border mx-3">Clicks per second:  <span id="currentSpeed" class=" m-2 p-3"></span> </span>
+               <span class="text-white border mx-3">Time in seconds:  <span id="time" class=" m-2 p-3"></span> </span>
+           </div>          
         </div>
+                    <!-- Trigger the modal with a button -->
+            <button id="lost-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <h4 class="modal-title">You Lost</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Your score is <span id="lost-modal-score"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+
+            </div>
+            </div>
     </body>
 
     <script src="index.js"></script>
