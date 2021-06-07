@@ -4,6 +4,8 @@ let standardInterval = 500;
 let columnStatus = [0, 0, 0, 0 ,0 ,0 ,0 ,0, 0];
 let startTime = new Date().getTime();
 
+document.getElementById("game-load-modal-opener").click();
+
 function startGame() {
     currentScore = 0;
     standardInterval = 500;

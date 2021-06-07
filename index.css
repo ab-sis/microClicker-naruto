@@ -8,6 +8,7 @@
     background-repeat: no-repeat;
     background-color: black;
     background-position: 70%;
+    overflow: hidden;
 }
 
 .heading-text-style {
