@@ -39,6 +39,7 @@ function selectRandomCol() {
 function clickOnHighlightedColumn(colNumber) {
     if (columnStatus[colNumber - 1] === 0) {
         setUserLost()
+        return;
     }
     currentScore = currentScore + 1;
     if (currentScore === 10) {

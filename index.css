@@ -8,7 +8,6 @@
     background-repeat: no-repeat;
     background-color: black;
     background-position: 70%;
-    overflow: hidden;
 }
 
 .heading-text-style {
@@ -20,11 +19,20 @@
     }
 
 img {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 200;
+    max-width: 300;
 }
-
 
 .heading {
       height: 100px;
+}
+
+body {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.hideScroll::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+
 }
