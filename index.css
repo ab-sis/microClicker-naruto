@@ -1,3 +1,9 @@
+/* Below code prevents the UI Clustering issues on smaller screens */
+body {
+    min-height: 820px;
+    min-width: 900px;
+}
+
 .container {
     width: max-content;
     height: max-content;
@@ -7,7 +13,9 @@
     background-image: url("images/itachiImg1.png");
     background-repeat: no-repeat;
     background-color: black;
-    background-position: 70%;
+    /* background-position: 70%; */
+    /* Instead keep the background position to bottom, as bg image looks cropped on big screen */
+    background-position: bottom right 30%;
 }
 
 .heading-text-style {
