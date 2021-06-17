@@ -1,135 +1,141 @@
 <html>
-    
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Abhijit Sisodiya" />
+    <meta name="description" content="This is a fast clicker game. Don't let all block to be occupied by hand-signs, click those signs as soon as image changes to hand sign. This game is based on Naruto, so for people not familiar with Naruto just play it like some other fast clicker game to test your hand eye co-ordination." />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="index.js" defer></script>
+    <title>Clicker Game</title>
+</head>
 
+<body class="body-bg hideScroll">
+    <div>
+        <!-- Trigger the modal with a button -->
+        <button id="game-load-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#game-load-modal">
+            Welcome
+        </button>
 
-        <link rel="stylesheet" type="text/css" href="index.css" media="screen"/>
-        <title>Clicker Game</title>
-    </head>
-    <body class="body-bg hideScroll">
-
-        <div>
-            <!-- Trigger the modal with a button -->
-            <button 
-            id="game-load-modal-opener" 
-            type="button"
-            class="btn btn-info btn-lg d-none" 
-            data-toggle="modal" 
-            data-target="#game-load-modal">
-            Welcome</button>
-   
-            <!-- Modal -->
-            <div id="game-load-modal" class="modal fade" role="dialog">
+        <!-- Modal -->
+        <div id="game-load-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
-   
                 <!-- Modal content-->
                 <div class="modal-content">
-                <div class="modal-header">
-                    
-                    <h4 class="modal-title">Welcome</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Welcome</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Hello every one, This is a fast clicker game. Don't let all
+                            block to be occupied by hand-signs, click those signs as soon as
+                            image changes to hand sign. This game is based on Naruto, so for
+                            people not familiar with Naruto just play it like some other
+                            fast clicker game to test your hand eye co-ordination.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p> Hello every one, this is a fast clicker game.
-                        Dowt let all block to be occupied by handsigns, click those signs as soon as image changes to hand sign.
-   
-                        This game is based on naruto, so for people not familiar with naruto just play it like some other fast clicker game to test your hand eye co-ordination.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-   
             </div>
-            </div>
-           </div>
+        </div>
+    </div>
 
-        <div class="row m-5">
-            <span class="col text-center align-middle my-auto text-white my-auto heading-text-style">
-               The Rogue Uchiha
+    <div class="row m-5">
+        <span class="col text-center align-middle my-auto text-white my-auto heading-text-style">
+            The Rogue Uchiha
+        </span>
+    </div>
+
+    <div>
+        <div id="row1" class="row h-25 my-2 text-center">
+            <div id="col1" class="col border m-1" onclick="clickOnHighlightedColumn(1)">
+                <img class="" id="img1" src="images/itachiHandSign.jpg" />
+            </div>
+            <div id="col2" class="col border m-1" onclick="clickOnHighlightedColumn(2)">
+                <img id="img2" class="" src="images/itachiHandSign.jpg" />
+            </div>
+            <div id="col3" class="col border m-1" onclick="clickOnHighlightedColumn(3)">
+                <img id="img3" class="" src="images/itachiHandSign.jpg" />
+            </div>
+        </div>
+        <div id="row2" class="row h-25 text-center my-2">
+            <div id="col4" class="col border m-1" onclick="clickOnHighlightedColumn(4)">
+                <img class="" id="img4" src="images/itachiHandSign.jpg" />
+            </div>
+            <div id="col5" class="col border m-1" onclick="clickOnHighlightedColumn(5)">
+                <img class="" id="img5" src="images/itachiHandSign.jpg" />
+            </div>
+            <div id="col6" class="col border m-1" onclick="clickOnHighlightedColumn(6)">
+                <img class="" id="img6" src="images/itachiHandSign.jpg" />
+            </div>
+        </div>
+        <div id="row3" class="row h-25 text-center my-2">
+            <div id="col7" class="col border m-1" onclick="clickOnHighlightedColumn(7)">
+                <img class="" id="img7" src="images/itachiHandSign.jpg" />
+            </div>
+            <div id="col8" class="col border m-1" onclick="clickOnHighlightedColumn(8)">
+                <img class="" id="img8" src="images/itachiHandSign.jpg" />
+            </div>
+            <div id="col9" class="col border m-1" onclick="clickOnHighlightedColumn(9)">
+                <img class="" id="img9" src="images/itachiHandSign.jpg" />
+            </div>
+        </div>
+        <div class="text-center my-3">
+            <button id="start" class="btn btn-md btn-primary" onclick="startGame()">
+                Click here to start game
+            </button>
+            <button id="stop" class="btn btn-md btn-primary" onclick="stopGame()">
+                Click here to stop/ reset game
+            </button>
+        </div>
+        <div class="text-center my-3">
+            <span class="text-white border mx-3">Score: <span id="score" class="m-2 p-3"></span>
+            </span>
+            <span class="text-white border mx-3">Clicks per second: <span id="currentSpeed" class="m-2 p-3"></span>
+            </span>
+            <span class="text-white border mx-3">Time in seconds: <span id="time" class="m-2 p-3"></span>
             </span>
         </div>
+    </div>
+    <div>
+        <button id="lost-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#myModal">
+            Open Modal
+        </button>
 
-        <div>
-            <div id="row1"  class="row h-25 my-2 text-center">
-                <div id="col1" class="col border m-1" onclick="clickOnHighlightedColumn(1)">
-                    <img class="" id="img1" src="images/itachiHandSign.jpg"/>
-                </div>
-                <div id="col2" class="col border m-1" onclick="clickOnHighlightedColumn(2)">
-                    <img id="img2" class="" src="images/itachiHandSign.jpg"/>
-                </div>
-                <div id="col3" class="col border m-1" onclick="clickOnHighlightedColumn(3)">
-                    <img id="img3" class=" " src="images/itachiHandSign.jpg"/>
-                </div>
-            </div>
-             <div id="row2" class="row h-25 text-center my-2">
-                <div id="col4" class="col border  m-1" onclick="clickOnHighlightedColumn(4)">
-                    <img class="" id="img4" src="images/itachiHandSign.jpg"/>
-                </div>
-                <div id="col5" class="col border  m-1" onclick="clickOnHighlightedColumn(5)">
-                    <img class="" id="img5" src="images/itachiHandSign.jpg"/>
-                </div>
-                <div id="col6" class="col border m-1" onclick="clickOnHighlightedColumn(6)">
-                    <img class="" id="img6" src="images/itachiHandSign.jpg"/>
-                </div>
-            </div>
-            <div id="row3" class="row h-25 text-center my-2 ">
-                <div id="col7" class="col border m-1" onclick="clickOnHighlightedColumn(7)">
-                    <img class="" id="img7" src="images/itachiHandSign.jpg"/>
-                </div>
-                <div id="col8" class="col border m-1" onclick="clickOnHighlightedColumn(8)">
-                    <img class="" id="img8" src="images/itachiHandSign.jpg"/>
-                </div>
-                <div id="col9" class="col border m-1" onclick="clickOnHighlightedColumn(9)">
-                    <img class="" id="img9" src="images/itachiHandSign.jpg"/>
-                </div>
-            </div> 
-            <div class="text-center my-3">
-                <button class="btn btn-md btn-primary" onclick="startGame()">Click here to start game</button>
-                <button class="btn btn-md btn-primary" onclick="stopGame()">Click here to stop/ reset game</button>
-            </div>
-           <div class="text-center my-3">
-               <span class="text-white border mx-3">Score:  <span id="score" class=" m-2 p-3"></span> </span>
-               <span class="text-white border mx-3">Clicks per second:  <span id="currentSpeed" class=" m-2 p-3"></span> </span>
-               <span class="text-white border mx-3">Time in seconds:  <span id="time" class=" m-2 p-3"></span> </span>
-           </div>          
-        </div>
-        <div>
-            <button id="lost-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
-
                 <!-- Modal content-->
                 <div class="modal-content">
-                <div class="modal-header">
-                    
-                    <h4 class="modal-title">You Lost</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-header">
+                        <h4 class="modal-title">You Lost</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your score is <span id="lost-modal-score"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>Your score is <span id="lost-modal-score"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-
-            </div>
             </div>
         </div>
+    </div>
+</body>
 
-        
-    </body>
-
-    <script src="index.js"></script>
 </html>
