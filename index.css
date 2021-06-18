@@ -1,4 +1,5 @@
 /* Below code prevents the UI Clustering issues on smaller screens */
+
 body {
     min-height: 820px;
     min-width: 900px;
@@ -10,9 +11,8 @@ body {
 }
 
 .body-bg {
-    background-image: url("images/itachiImg1.png");
+    background: url("images/itachiImg1.png"), linear-gradient(45deg, black, darkslategrey);
     background-repeat: no-repeat;
-    background-color: black;
     /* background-position: 70%; */
     /* Instead keep the background position to bottom, as bg image looks cropped on big screen */
     background-position: bottom right 30%;
@@ -22,9 +22,9 @@ body {
     font-size: xx-large;
 }
 
-.fit-image{
+.fit-image {
     max-height: 50%;
-    }
+}
 
 img {
     max-height: 200;
@@ -32,15 +32,17 @@ img {
 }
 
 .heading {
-      height: 100px;
+    height: 100px;
 }
 
 body {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .hideScroll::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
-
+    display: none;
+    /* Safari and Chrome */
 }
