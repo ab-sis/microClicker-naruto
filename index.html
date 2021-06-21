@@ -7,10 +7,10 @@
     <meta name="description" content="This is a fast clicker game. Don't let all block to be occupied by hand-signs, click those signs as soon as image changes to hand sign. This game is based on Naruto, so for people not familiar with Naruto just play it like some other fast clicker game to test your hand eye co-ordination." />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="index.js" defer></script>
+    <script src="script.js" defer></script>
     <title>Clicker Game</title>
 </head>
 
@@ -109,7 +109,7 @@
         </div>
     </div>
     <div>
-        <button id="lost-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#myModal">
+        <button id="lost-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">
             Open Modal
         </button>
 
@@ -126,6 +126,8 @@
                     </div>
                     <div class="modal-body">
                         <p>Your score is <span id="lost-modal-score"></span></p>
+                        <p>Clicks per second <span id="lost-modal-clicks"></span></p>
+                        <p>Time taken is <span id="lost-modal-time"></span></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -135,6 +137,40 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div>
+        <button id="high-score-modal-opener" type="button" class="btn btn-info btn-lg d-none" data-toggle="modal" data-target="#high-score-modal" data-backdrop="static" data-keyboard="false">
+            Highscore Modal
+        </button>
+
+        <!-- Modal -->
+        <div id="high-score-modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">You have achieved a new high score</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your new high score is <span id="high-score"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" mt-5">
+        <img src="https://visitor-badge.laobi.icu/badge?page_id=absis-microclicker-naruto" alt="visitor badge"/>
     </div>
 </body>
 

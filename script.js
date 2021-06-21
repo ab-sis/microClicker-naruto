@@ -36,16 +36,22 @@ function stopGame() {
 }
 
 function selectRandomColumnNumber() {
-    const randomNumber = Math.floor(Math.random() * 10);
-    if (columnStatus[randomNumber - 1] === 1) {
-        return selectRandomColumnNumber();
-    }
-    return randomNumber;
+    // Random number from 0 - 8 => for index of columnStatus
+    const randomNumber = Math.floor(Math.random() * 9);          
+    // Get all column index into an array that are still not handsigns
+    const remainingCols = columnStatus.map((status, index) => {
+        if (status === 0) {
+            return index;
+        }
+    }).filter(value => typeof value === 'number');
+    // Setep to randomize selection of column based on random number
+    const randomRemainingCol = remainingCols[randomNumber % remainingCols.length];
+    // Add 1 to convert 0-8 => 1-9 (columns names in HTML are from 1 to 9)
+    return randomRemainingCol + 1;
 }
 
 function selectRandomCol() {
     let colNumber = selectRandomColumnNumber().toString();
-    console.log(colNumber);
     document.getElementById("img" + colNumber).src = "images/reaperDeathSeal" + colNumber + ".jpg";
     columnStatus[colNumber - 1] = 1;
     if (!columnStatus.filter((status) => status === 0).length) {
@@ -76,8 +82,8 @@ function clickOnHighlightedColumn(colNumber) {
     const totalTimeInSeconds = timeNow.getTime() / 1000 - startTime / 1000;
 
     document.getElementById("score").innerHTML = currentScore;
-    document.getElementById("currentSpeed").innerHTML = currentScore / totalTimeInSeconds;
-    document.getElementById("time").innerHTML = totalTimeInSeconds;
+    document.getElementById("currentSpeed").innerHTML = (currentScore / totalTimeInSeconds).toFixed(3);
+    document.getElementById("time").innerHTML = (totalTimeInSeconds).toFixed(3);
     document.getElementById("img" + colNumber).src = "images/itachiHandSign.jpg";
     columnStatus[colNumber - 1] = 0;
 }
@@ -88,15 +94,30 @@ function resetColumnStatus() {
 
 function setUserLost() {
     clearInterval(timerVar);
+    const isNewHighScore = isHighScore();    
+    if (isNewHighScore) {
+        document.getElementById("high-score").innerHTML = currentScore;
+        document.getElementById("high-score-modal-opener").click();
+        resetScoreFields();
+        isGameActive = false;
+        // Stop the game too, in order to reset it
+        stopGame();
+        return;
+    }
+    const totalTimeInSeconds = new Date().getTime() / 1000 - startTime / 1000;
     document.getElementById("lost-modal-score").innerHTML = currentScore;
+    document.getElementById("lost-modal-clicks").innerHTML = (currentScore / totalTimeInSeconds).toFixed(3);
+    document.getElementById("lost-modal-time").innerHTML =  (totalTimeInSeconds).toFixed(3);
     // If game is active then only show the score card / this was a bug that when game wasn't even active the user lost pop up was showing up
     if (isGameActive) {
         document.getElementById("lost-modal-opener").click();
     }
+    resetScoreFields();
     isGameActive = false;
     // Stop the game too, in order to reset it
     stopGame();
 }
+
 
 function resetColumnImages() {
     for (let i = 1; i < 10; i = i + 1) {
@@ -104,5 +125,17 @@ function resetColumnImages() {
     }
 }
 
+function isHighScore() {
+    const previousHighScore = window.localStorage.getItem('naruto-score');
+    if  (currentScore > Number(previousHighScore)) {
+        window.localStorage.setItem('naruto-score', currentScore);
+        return true;
+    } 
+    return false;
+}
 
-// TODO: Select Random Column Logic Needs to Be Optimized as it returns `0` which is not handled, also it delays the process on repeated numbers thus resulting in unfair events occurrence
+function resetScoreFields() {
+    document.getElementById("score").innerHTML = 0;
+    document.getElementById("currentSpeed").innerHTML = 0;
+    document.getElementById("time").innerHTML = 0;
+}
